@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #include "user.h"
 #include "file_utils.h"
+
+char filename_people[] = "data_people.dat";
 
 struct Person login(){
     char username[20], password[20];
@@ -94,6 +95,8 @@ struct Person sign_up(){
     fwrite(&person, sizeof(struct Person), 1, file);
 
     fclose(file);
+
+    return person;
 }
 
 struct Person menu(){
@@ -112,11 +115,4 @@ struct Person menu(){
         case 2:
             return sign_up();
     }
-
-}
-
-int main(){
-    menu();
-
-    return 0;
 }

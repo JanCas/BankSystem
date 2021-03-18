@@ -6,7 +6,7 @@ project(BankSystem C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(
-        bankSystem.c user.c user.h file_utils.c file_utils.h main.c)
+        bankSystem.c user.c user.h file_utils.c file_utils.h main.c bankSystem.h)
 
 file(GLOB MY_FILES "*.dat")
 file(COPY ${MY_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

@@ -4,7 +4,6 @@
 
 #ifndef BANKSYSTEM_USER_H
 #define BANKSYSTEM_USER_H
-char filename_people[] = "data_people.dat";
 
 struct Date {
     int Day, Month, Year;
