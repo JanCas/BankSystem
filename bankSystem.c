@@ -1,23 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <stdbool.h>
+//#include "user.h"
+
 
 char filename[] = "data.dat";
-
-struct Date {
-	int Day, Month, Year;
-}
-
-struct Person {
-	char first_name[50];
-	char last_name{50};
-	struct Date dob;
-};
 
 struct Account {
 	float amount;
 	int id;
-	struct Person owner;
+	//struct Person owner;
 };
 
 void account_str(struct Account account){
@@ -85,6 +79,7 @@ void read_account(int id){
 	account_str(account);
 }
 
+/*
 int main(){
 	int choice, id;
 	
@@ -109,3 +104,4 @@ int main(){
 
 	return -1;
 }
+*/
