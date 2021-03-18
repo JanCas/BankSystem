@@ -18,5 +18,6 @@ struct Person {
 };
 
 struct Person menu();
+bool struct_is_same(struct Person p1, struct Person p2);
 
 #endif //BANKSYSTEM_USER_H

@@ -4,6 +4,7 @@
 #include "user.h"
 #include "bankSystem.h"
 #include "file_utils.h"
+#include <stdbool.h>
 
 char filename[] = "data.dat";
 
@@ -16,22 +17,14 @@ struct Account {
 void account_str(struct Account account){
 	printf("Account ID: %d \n", account.id);
 	printf("Account amout: $%.2f \n", account.amount);
-	printf("Account owner %s - %s", account.owner.first_name, account.owner.last_name);
+	printf("Account owner %s - %s\n", account.owner.first_name, account.owner.last_name);
 }
 
 void write_account(struct Account account){
 	FILE *data_file;
 
 	data_file = open_file_write(filename);
-
 	fwrite(&account, sizeof(struct Account), 1, data_file);
-
-	if (fwrite == 0){
-		printf("Account store successfully");
-	} else {
-		printf("error writing to file! \n");
-	}
-
 	fclose(data_file);
 }
 
@@ -73,13 +66,24 @@ void read_account(int id){
 	account_str(account);
 }
 
+void show_all_accounts(struct Person person) {
+    FILE *file = open_file_read(filename);
+    struct Account account;
+
+    while(fread(&account, sizeof(struct Account), 1, file)){
+        if (struct_is_same(account.owner, person)){
+            account_str(account);
+            printf("\n");
+        }
+    }
+}
 
 void account_menu(struct Person person){
 	int choice, id;
 	
 	printf("1. Open a new account\n");
-	printf("2. Read Account by Id");
-	printf("3. Display all accounts");
+	printf("2. Read Account by Id\n");
+	printf("3. Display all accounts\n");
 	printf("\n");
 	printf("Please enter your choice: ");	
 	scanf ("%d", &choice);
@@ -93,7 +97,12 @@ void account_menu(struct Person person){
 			scanf("%d", &id);
 
 			read_account(id);
-			break;	
+			break;
+	    case 3:
+	        printf("---------------- \n");
+	        show_all_accounts(person);
+	        printf("---------------- \n");
+	        break;
 
 	}
 }

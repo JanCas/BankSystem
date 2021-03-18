@@ -99,6 +99,10 @@ struct Person sign_up(){
     return person;
 }
 
+bool struct_is_same(struct Person p1, struct Person p2){
+    return !(strcmp(p1.username, p2.username) && strcmp(p1.password, p2.password));
+}
+
 struct Person menu(){
     int choice;
 
